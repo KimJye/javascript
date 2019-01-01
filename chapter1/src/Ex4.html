@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>비교</title>
+</head>
+<body>
+<script>
+    var codyA = new Object();
+
+    codyA.living = true;
+    codyA.age = 33;
+    codyA.gender = 'male';
+    codyA.getGender = function(){return cody.gender;};
+    console.log(codyA);
+    console.log(typeof codyA);
+
+    var Person = function(living, age, gender){
+        this.living = living;
+        this.age = age;
+        this.gender = gender;
+        this.getGender = function(){return this.gender;};
+    };
+
+    //Person 객체의 인스턴스를 만들고 cody라는 변수에 저장
+    var codyB = new Person(true,33,'male');
+
+    console.log(codyB);
+    console.log(typeof codyB);
+</script>
+</body>
+</html>

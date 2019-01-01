@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>내장되어 있지 않은 Person 객체</title>
+</head>
+<body>
+
+<script>
+    //Person()객체를 만들기 위해 Person 생성자 함수를 정의한다.
+    var Person = function(living, age, gender){
+        this.living = living;
+        this.age = age;
+        this.gender = gender;
+        this.getGender = function(){return this.gender;};
+    };
+
+    //Person 객체의 인스턴스를 만들고 cody라는 변수에 저장
+    var cody = new Person(true,33,'male');
+
+    console.log(cody);
+    console.log(typeof cody);
+    console.log(cody.constructor);
+</script>
+</body>
+</html>

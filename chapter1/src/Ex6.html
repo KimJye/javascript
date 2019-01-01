@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>네이티브 생성자</title>
+</head>
+<body>
+<script>
+
+    var myNumber = new Number(24);
+    var myString = new String('female');
+    var myBoolean = new Boolean(false);
+    var myObject = new Object();
+    var myArray = new Array('foo','bar');
+    var myFunction = new Function("x","y","return x*y");
+    var myDate = new Date();
+    var myRegExp = new RegExp('\bt[a-z]+\b');
+    var myError = new Error('crap!');
+
+    console.log(myNumber.constructor);
+    console.log(myNumber);
+    console.log(myString.constructor);
+    console.log(myBoolean.constructor);
+    console.log(myObject.constructor);
+    console.log(myArray.constructor);
+    console.log(myFunction.constructor);
+    console.log(myDate.constructor);
+    console.log(myRegExp.constructor);
+    console.log(myError.constructor);
+    console.log(typeof myDate);
+</script>
+</body>
+</html>

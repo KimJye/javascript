@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리터럴</title>
+</head>
+<body>
+<script>
+
+    var myNumber = new Number(24);
+    var myNumberLiteral = 24;
+
+    var myString = new String('female');
+    var myStringLiteral = 'female';
+
+    var myBoolean = new Boolean(false);
+    var myBooleanLiteral = false;
+
+    var myObject = new Object();
+    var myObjectLiteral = {};
+
+    var myArray = new Array('foo','bar');
+    var myArrayLiteral = ['foo','bar'];
+
+    var myFunction = new Function("x","y","return x*y");
+    var myFunctionLiteral = function(x,y){return x*y};
+
+    var myDate = new Date();
+
+    var myRegExp = new RegExp('\bt[a-z]+\b');
+
+    var myError = new Error('crap!');
+
+    console.log(myNumber.constructor,myNumberLiteral.constructor);
+    console.log(myString.constructor,myStringLiteral.constructor);
+    console.log(myBoolean.constructor,myBooleanLiteral.constructor);
+    console.log(myObject.constructor,myObjectLiteral.constructor);
+    console.log(myArray.constructor,myArrayLiteral.constructor);
+    console.log(myFunction.constructor,myFunctionLiteral.constructor);
+    console.log(myDate.constructor);
+    console.log(myRegExp.constructor);
+    console.log(myError.constructor);
+    console.log(typeof myDate);
+</script>
+</body>
+</html>
