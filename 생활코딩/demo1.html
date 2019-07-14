@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>비동기 처리</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <a>
+      jquery : 자바스크립트의 생산성을 향상시켜주는 자바스크립트 라이브러리</a
+    >
+    <a> ajax : 비동기 처리</a>
+    <script type="text/javascript">
+      // $.get()은 jquery객체의 메소드. ajax통신하는 기능.
+      $.get(
+        // url(읽어오려는 데이터)
+        "./datasource.json.js",
+
+        // 비지니스 로직
+        // 함수 - 서버 통신이 끝난 뒤 호출되도록 약속하는 함수. 인자로는 서버에서 가져온 객체.
+        // 콜백
+        function(result) {
+          console.log(result);
+        },
+        "json"
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>정규표현식</title>
+  </head>
+  <body>
+    <a
+      >정규표현식은 두가지 단계로 이루어진다. 하나는 컴파일(compile) 다른 하나는
+      실행(execution)이다</a
+    >
+    <a
+      >컴파일은 검출하고자 하는 패턴을 만드는 일이다. 우선 정규표현식 객체를
+      만들어야 한다. 객체를 만드는 방법은 두가지가 있다. a라는 텍스트를 찾아내는
+      정규표현식을 만들어보자.</a
+    >
+    <a>
+      두가지 모두 같은 결과를 만들지만 각자가 장단점이 있다.
+    </a>
+
+    <a>
+      정규표현식을 컴파일해서 객체를 만들었다면 이제 문자열에서 원하는 문자를
+      찾아내야 한다.
+    </a>
+    <a> 정규표현식으로 주로 추출, test, 치환의 작업을 한다.</a>
+
+    <script>
+      // 정규표현식 리터럴
+      var pattern = /a/;
+
+      // 정규표현식 객체 생성자
+      var pattern = new RegExp("a");
+
+      // RegExp.exec() : 추출
+      // 문자열 a를 값으로 하는 배열을 리턴한다.
+      console.log(pattern.exec("abcdef")); // ["a"]
+
+      // 인자 'bcdef'에는 a가 없기 때문에 null을 리턴한다.
+      console.log(pattern.exec("bcdefg")); // null
+
+      // RegExp.test() : test
+      // test는 인자 안에 패턴에 해당되는 문자열이 있으면 true, 없으면 false를 리턴한다
+      console.log(pattern.test("abcdef")); // true
+      cnosole.log(pattern.test("bcdefg")); // false
+
+      // 문자열 객체
+      // String.match() 비슷하다. RegExp.exec()
+      console.log("abcdef".match(pattern)); // ["a"]
+      console.log("bcdefg".match(pattern)); // null
+
+      // String.replace()
+      console.log("abcdef".replace(pattern, "A")); // Abcdef
+
+      // i를 붙이면 대소문자를 구분하지 않는다.
+      var xi = /a/;
+      console.log("Abcde".match(xi)); // null
+      var oi = /a/i;
+      console.log("Abcde".match(oi)); // ["A"];
+
+      // g를 붙이면 검색된 모든 결과를 리턴한다.
+      var xg = /a/;
+      console.log("abcdea".match(xg)); // ["a"]
+      var og = /a/g;
+      console.log("abcdea".match(og)); // ["a", "a"]
+
+      // 캡처
+      // \w : A~Z, a~z, 0~9
+      // \s : 공백을 뜻함
+      var pattern = /(\w+)\s(\w+)/;
+      var str = "coding everybody";
+      var result = str.replace(pattern, "$2, $1"); // pattern에 해당하는 값을 두번째 인자로 대체한다. 여기서 $2는 pattern에서 두번째 그룹을 뜻한다.
+      console.log(result); // everybody, coding
+
+      // 치환
+      // (?:https?) -> https or http
+      var urlPattern = /\b(?:https?):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*/gim;
+      var content =
+        "생활코딩 : http://opentutorials.org/course/1 입니다. 네이버 : http://naver.com 입니다. ";
+
+      // content에서 urlPattern을 찾을때마다 function()을 한다. 이때 urlPattern에 맞게 찾은 것을 function 인자로 넘긴다.
+      // 그 인자를 받아서 가공한다음에 return을 해주면 치환이되고 문자열로 리턴한다.
+      // 여기서 function()은 값으로서의 함수와 콜백 부분에서 다시 배움.
+      var result = content.replace(urlPattern, function(url) {
+        return '<a href="' + url + '">' + url + "</a>";
+      });
+      console.log(result);
+    </script>
+  </body>
+</html>

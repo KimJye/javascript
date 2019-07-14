@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>비교 연산자</title>
+  </head>
+  <body>
+    <script>
+      // == 연산자 (동등 연산자)
+      alert(1 == 2); //false
+      alert(1 == 1); //true
+      alert("one" == "two"); //false
+      alert("one" == "one"); //true
+
+      // === 연산자 (일치 연산자)
+      alert(1 == "1"); //true
+      alert(1 === "1"); //false
+
+      // null : 값이 없다. 프로그래머가 의도한 상황
+      // undefined : 값이 정의되지 않다. 프로그래머가 의도하지 않은 상황
+      alert(null == undefined); // true
+      alert(null === undefined); // false
+
+      // 자바스크립트에서는 true를 숫자 1과 문자 1로 간주한다.
+      alert(true == 1); //true
+      alert(true === 1); //false
+      alert(true == "1"); //true
+      alert(true === "1"); //false
+
+      alert(0 === -0); //true 0은 양수이건 음수이건 0이다.
+
+      // NaN : 0/0과 같은 연산의 결과로 만들어지는 특수한 데이터 형인데 숫자가 아니라는 뜻이다. 즉 계산을 할 수 없다.
+      alert(NaN === NaN); // false
+
+      // != : 부정을 의미
+      alert(1 != 2); //true
+      alert(1 != 1); //false
+      alert("one" != "two"); //true
+      alert("one" != "one"); //false
+
+      // !== : 정확하게 같지 않다라는 의미
+    </script>
+  </body>
+</html>

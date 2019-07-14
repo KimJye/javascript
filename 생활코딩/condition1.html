@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>조건문 응용</title>
+  </head>
+  <body>
+    <script>
+      // prompt : 사용자가 입력한 값을 가져와서 id 변수의 값으로 대입한다.
+      id = prompt("아이디를 입력해주세요.");
+      if (id == "egoing") {
+        password = prompt("비밀번호를 입력해주세요.");
+        if (password === "111111") {
+          alert("인증 했습니다.");
+        } else {
+          alert("인증에 실패 했습니다.");
+        }
+      } else {
+        alert("인증에 실패 했습니다.");
+      }
+
+      // &&
+      // 1
+      if (true && true) {
+        alert(1);
+      }
+      if (true && false) {
+        alert(2);
+      }
+      if (false && true) {
+        alert(3);
+      }
+      if (false && false) {
+        alert(4);
+      }
+
+      // 기타 false로 간주되는 데이터 형
+
+      if (!"") {
+        // 빈문자열은 false
+        alert("빈 문자열");
+      }
+      if (!undefined) {
+        // undefined false
+        alert("undefined");
+      }
+
+      var a; // undefined
+      if (!a) {
+        alert("값이 할당되지 않은 변수");
+      }
+      if (!null) {
+        //null false
+        alert("null");
+      }
+      if (!NaN) {
+        // NaN false
+        alert("NaN");
+      }
+    </script>
+  </body>
+</html>

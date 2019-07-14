@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>함수 - 유효범위</title>
+  </head>
+  <body>
+    <a>
+      같은 이름의 지역변수와 전역변수가 동시에 정의되어 있다면 지역변수가
+      우선한다는 것을 알 수 있다
+    </a>
+    <script>
+      // 출력값 모두 local
+      var vscope = "global";
+      function fscope() {
+        vscope = "local";
+        alert("함수안" + vscope);
+      }
+      fscope();
+      alert("함수밖" + vscope);
+    </script>
+    <a>var를 사용하지 않은 지역변수는 전역변수가 된다</a>
+    <a
+      >전역변수는 사용하지 않는 것이 좋다. 여러가지 이유로 그 값이 변경될 수
+      있기 때문이다</a
+    >
+    <a
+      >불가피하게 전역변수를 사용해야 하는 경우는 하나의 객체를 전역변수로
+      만들고 객체의 속성으로 변수를 관리하는 방법을 사용한다.</a
+    >
+    <a> * 전역변수의 사용 *</a>
+    <script>
+      var MYAPP = {}; // 객체
+
+      // 객체의 속성의 값에 또 객체가 있는 형태(key,value).
+      MYAPP.calculator = {
+        left: null,
+        right: null
+      };
+      MYAPP.coordinate = {
+        left: null,
+        right: null
+      };
+
+      MYAPP.calculator.left = 10;
+      MYAPP.calculator.right = 20;
+      function sum() {
+        return MYAPP.calculator.left + MYAPP.calculator.right;
+      }
+      document.write(sum());
+    </script>
+
+    <a
+      >전역변수를 사용하고 싶지 않다면 아래와 같이 익명함수를 호출함으로서
+      이러한 목적을 달성할 수 있다.</a
+    >
+
+    <script>
+      // 단 하나의 전역변수도 쓰고 싶지 않을 때는 익명함수를 쓰자. == (function()).이제 MYAPP은 지역변수가 됨
+      (function() {
+        var MYAPP = {}; // 객체
+
+        // 객체의 속성의 값에 또 객체가 있는 형태(key,value).
+        MYAPP.calculator = {
+          left: null,
+          right: null
+        };
+        MYAPP.coordinate = {
+          left: null,
+          right: null
+        };
+
+        MYAPP.calculator.left = 10;
+        MYAPP.calculator.right = 20;
+        function sum() {
+          return MYAPP.calculator.left + MYAPP.calculator.right;
+        }
+        document.write(sum());
+      })();
+    </script>
+
+    <a>
+      유효범위의 대상 : 자바스크립트의 지역변수는 함수에서만 유효하다!
+    </a>
+
+    <script>
+      // coding everybody
+      for (var i = 0; i < 1; i++) {
+        var name = "coding everybody";
+      }
+      alert(name);
+    </script>
+
+    <a> 정적 유효범위</a>
+
+    <script>
+      // 자바스크립트는 함수가 선언된 시점에서의 유효범위를 갖는다
+      // 결과 : 5
+      var i = 5;
+
+      function a() {
+        var i = 10;
+        b();
+      }
+
+      function b() {
+        document.write(i);
+      }
+
+      a();
+    </script>
+  </body>
+</html>
