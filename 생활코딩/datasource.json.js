@@ -1,1 +1,1 @@
-{"title":"JavaScript","author":"egoing"}
+//{"title": "JavaScript","author":"egoing"}

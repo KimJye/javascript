@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Standard Built-in Object(표준내장객체)</title>
+  </head>
+  <body>
+    <script>
+      var arr = new Array("seoul", "new york", "ladarkh", "pusan", "Tsukuba");
+      function getRandomValueFromArray(haystack) {
+        var index = Math.floor(haystack.length * Math.random());
+        return haystack[index];
+      }
+      console.log(getRandomValueFromArray(arr));
+
+      // 위의 코드를 아래와 같이 수정한다
+      // 이 함수를 배열 객체에 포함시키는 것이다. 그렇게하면 마치 배열에 내장된 메소드인 것처럼 위의 기능을 사용할 수 있다
+      Array.prototype.rand = function() {
+        var index = Math.floor(this.length * Math.random());
+        return this[index];
+      };
+      var arr = new Array("seoul", "new york", "ladarkh", "pusan", "Tsukuba");
+      console.log(arr.rand());
+    </script>
+  </body>
+</html>

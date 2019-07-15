@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>prototype</title>
+  </head>
+  <body>
+    <a>
+      prototype에 저장된 속성들은 생성자를 통해서 객체가 만들어질 때 그 객체에
+      연결된다.
+    </a>
+    <script>
+      // true
+      function Ultra() {}
+      Ultra.prototype.ultraProp = true;
+
+      function Super() {}
+      Super.prototype = new Ultra();
+
+      function Sub() {}
+      Sub.prototype = new Super();
+
+      var o = new Sub();
+      console.log(o.ultraProp);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>객체 생성자와 new</title>
+  </head>
+  <body>
+    <a>일반함수와 구분하기 위해서 첫글자를 대문자로 표시한다</a>
+    <script>
+      function Person(name) {
+        this.name = name;
+        this.introduce = function() {
+          return "My name is " + this.name;
+        };
+      }
+      var p1 = new Person("egoing");
+      document.write(p1.introduce() + "<br />");
+
+      var p2 = new Person("leezche");
+      document.write(p2.introduce());
+    </script>
+  </body>
+</html>

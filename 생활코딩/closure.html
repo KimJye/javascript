@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>클로저</title>
+  </head>
+  <body>
+    <a
+      >클로저(closure)는 내부함수가 외부함수의 맥락(context)에 접근할 수 있는
+      것. 즉, 내부함수는 외부함수의 지역변수에 접근 할 수 있는데 외부함수의
+      실행이 끝나서 외부함수가 소멸된 이후에도 내부함수가 외부함수의 변수에 접근
+      할 수 있다</a
+    >
+    <script>
+      function outter() {
+        var title = "coding everybody";
+        return function() {
+          alert(title);
+        };
+      }
+      var inner = outter();
+      inner();
+
+      // 클로저 장점 코드 : JavaScript는 기본적으로 Private한 속성을 지원하지 않는데, Private한 속성을 사용할 수 있게된다.
+      // factory_movie의 지역변수인 title은 get_title, set_title에서만 접근 가능하다.
+      // title은 수정은 set_title을 통해서만 수정 가능하고 접근도 get_title통해서만.
+      function factory_movie(title) {
+        return {
+          get_title: function() {
+            return title;
+          },
+          set_title: function(_title) {
+            if (typeof _title === "String") {
+              title = _title;
+            } else {
+              alert("제목은 문자열이어야 합니다");
+            }
+          }
+        };
+      }
+      ghost = factory_movie("Ghost in the shell");
+      matrix = factory_movie("Matrix");
+
+      alert(ghost.get_title());
+      alert(matrix.get_title());
+
+      ghost.set_title("공각기동대");
+
+      alert(ghost.get_title()); // 공각기동대
+      alert(matrix.get_title()); // Matrix
+
+      // 클로저 관련 자주하는 실수
+      // i가 공유되어 5를 5번 출력함
+      var arr = [];
+      for (var i = 0; i < 5; i++) {
+        arr[i] = function() {
+          return i;
+        };
+      }
+      for (var index in arr) {
+        console.log(arr[index]());
+      }
+
+      // 위 코드 수정
+      // 0 1 2 3 4
+      var arr = [];
+      for (var i = 0; i < 5; i++) {
+        arr[i] = (function(id) {
+          return function() {
+            return id;
+          };
+        })(i);
+      }
+      for (var index in arr) {
+        console.log(arr[index]());
+      }
+    </script>
+  </body>
+</html>

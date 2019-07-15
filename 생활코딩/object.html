@@ -4,40 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>객체</title>
+    <title>Object</title>
   </head>
   <body>
+    <script></script>
+    <a
+      >Object 객체는 확장하지 않는 것이 바람직하다. 왜냐하면 모든 객체에 영향을
+      주기 때문이다</a
+    >
     <script>
-      // 객체 생성 방법
-      var grades = { egoing: 10, k8805: 6, sorialgi: 80 };
-
-      // 객체 생성 다른 방법
-      var grades = {}; // 또는 var grades = new Object();
-      grades["egoing"] = 10;
-      grades["k8805"] = 6;
-      grades["sorialgi"] = 80;
-
-      // 객체 접근
-      alert(grades["sorialgi"]);
-      alert(grades.sorialgi);
-
-      var grades = { egoing: 10, k8805: 6, sorialgi: 80 };
-      for (key in grades) {
-        document.write("key : " + key + " value : " + grades[key] + "<br />");
+      // name
+      // contain
+      // 결과를 보면, 객체가 기본적으로 가지고 있을 것으로 예상하고 있는 객체 외에 다른 객체를 가지고 있다.
+      for (var name in o) {
+        console.log(name);
       }
-
-      // 객체에는 객체를 담을수도 있고, 함수도 담을 수 있다.
-      var grades = {
-        list: { egoing: 10, k8805: 6, sorialgi: 80 },
-        show: function() {
-          for (var name in this.list) {
-            document.write(name + ":" + this.list[name] + "<br />");
-          }
-        }
-      };
-      grades.show(); // == alert(grades["show"]())
-      alert(grades["list"]["egoing"]); // 10
-      alert(grades["show"]()); // show function
+    </script>
+    <a
+      >위 문제를 회피하기 위해서는 프로퍼티의 해당 객체의 소속인지를 체크해볼 수
+      있는 hasOwnProperty를 사용하면 된다.</a
+    >
+    <script>
+      // hasOwnProperty는 인자로 전달된 속성의 이름이 객체의 속성인지 여부를 판단한다.
+      // 만약 prototype으로 상속 받은 객체라면 false가 된다
+      for (var name in o) {
+        if (o.hasOwnProperty(name)) console.log(name);
+      }
     </script>
   </body>
 </html>
